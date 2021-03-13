@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 //components
 import { HeaderMenu } from './headers/HeaderMenu';
+import { LoginHeader } from './headers/LoginHeader'
 import { Auth } from '../modules/Auth'
 
 export function Layout({
@@ -36,12 +37,9 @@ export function Layout({
         </header>
       )}
       {/* haumbuger menu*/}
-      {/* {Auth.isLoggedIn() ? (
+      {Auth.isLoggedIn() ? (
         <LoginHeader />
       ) : (
-        <HeaderMenu />
-      )} */}
-      {!Auth.isLoggedIn() && (
         <HeaderMenu />
       )}
       <main className={styles.main}>{children}</main>
