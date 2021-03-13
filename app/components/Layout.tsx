@@ -2,6 +2,9 @@ import styles from './Layout.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image'
+//components
+import { HeaderMenu } from './headers/HeaderMenu';
+import { Auth } from '../modules/Auth'
 
 export function Layout({
   children,
@@ -38,6 +41,9 @@ export function Layout({
       ) : (
         <HeaderMenu />
       )} */}
+      {!Auth.isLoggedIn() && (
+        <HeaderMenu />
+      )}
       <main className={styles.main}>{children}</main>
     </div>
   )
