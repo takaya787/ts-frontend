@@ -5,7 +5,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCross } from 'react-icons/im';
 import styles from './HeaderMenu.module.scss';
 //components
-// import Signup from '../Signup';
+import { Modal } from '../Modal';
 
 export const HeaderMenu: React.FC = () => {
   const [menuopen, setMenuOpen] = useState<boolean>(false);
@@ -26,11 +26,11 @@ export const HeaderMenu: React.FC = () => {
             <Link href="/guest">
               <a className={styles.link}><li className={styles.link_part}>Guest Map</li></a>
             </Link>
-            {/* <li className={styles.component}>
-              <Signup
+            <li className={styles.component}>
+              <Modal
                 title="はじめる"
               />
-            </li> */}
+            </li>
           </ul>
         </div>
       )}
