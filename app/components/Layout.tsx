@@ -1,12 +1,13 @@
 import styles from './Layout.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image'
 
 export function Layout({
   children,
   home
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
   home?: boolean
 }
 ) {
@@ -27,7 +28,7 @@ export function Layout({
       {!home && (
         <header className={styles.header}>
           <Link href='/'>
-            {/* <Image className={styles.header_logo} src='/images/logo.png' alt="Logo" height={35} width={200} /> */}
+            <Image className={styles.header_logo} src='/images/logo.png' alt="Logo" height={35} width={200} />
           </Link>
         </header>
       )}
