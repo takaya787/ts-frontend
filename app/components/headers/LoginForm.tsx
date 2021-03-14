@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { Auth } from '../../modules/auth'
+import { Auth } from '../../modules/Auth'
 //contexts
 // import { UserContext } from '../../pages/_app';
 import styles from './Form.module.scss';

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 //components関連
-import { Auth } from '../modules/auth';
+import { Auth } from '../modules/Auth';
 import { Layout } from '../components/Layout';
 // import Signup from '../components/Signup';
 import styles from '../styles/Beginner.module.scss';

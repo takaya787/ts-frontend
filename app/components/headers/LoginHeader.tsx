@@ -7,7 +7,7 @@ import { ImCross } from 'react-icons/im';
 //others
 // import { UserContext } from '../../pages/_app';
 import styles from './HeaderMenu.module.scss';
-import { Auth } from '../../modules/auth';
+import { Auth } from '../../modules/Auth';
 
 export const LoginHeader: React.FC = () => {
   const [menuopen, setMenuOpen] = useState<boolean>(false);

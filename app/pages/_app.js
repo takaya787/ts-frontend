@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { useState, useEffect, createContext } from 'react';
-import { Auth } from '../modules/auth';
+import { Auth } from '../modules/Auth';
 
 export const UserContext = createContext();
 const baseUrl = `${process.env.BASE_URL}auto_login`
