@@ -10,7 +10,7 @@ import { UserValueType, UserSignupType } from '../../types/UserType'
 import { useFormErrors } from '../../hooks/useFormErrors'
 import styles from './Form.module.scss';
 
-const endpoint = process.env.BASE_URL + 'users'
+const endpoint = process.env.NEXT_PUBLIC_BASE_URL + 'users'
 
 type UserFormProps = {
   Closemodal: VoidFunction
@@ -27,6 +27,7 @@ export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
   const { setUser } = useContext(UserContext);
 
   const onSubmit = (value: UserValueType): void => {
+
     fetch(endpoint, {
       method: 'POST', // or 'PUT'
       headers: {
