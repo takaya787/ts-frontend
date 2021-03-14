@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from './Modal.module.scss';
 //components
-// import UserForm from './headers/UserForm';
-// import LoginForm from './headers/LoginForm';
+import { UserForm } from './headers/UserForm';
+import { LoginForm } from './headers/LoginForm';
 
 type ModalPropsType = {
   title: string
@@ -45,7 +45,7 @@ export const Modal: React.FC<ModalPropsType> = ({ title }) => {
             {isSignup && (
               <>
                 <h2 className={styles.content_title}>ユーザー登録！</h2>
-                {/* <UserForm /> */}
+                <UserForm Closemodal={Closemodal} />
                 <button className={styles.content_switch} onClick={Logincontroll}>ログインはこちら</button>
               </>
             )}
@@ -53,7 +53,7 @@ export const Modal: React.FC<ModalPropsType> = ({ title }) => {
             {isLogin && (
               <>
                 <h2 className={styles.content_title}>Log inはこちら！</h2>
-                {/* <LoginForm /> */}
+                <LoginForm Closemodal={Closemodal} />
                 <button className={styles.content_switch} onClick={Signupcontroll}>ユーザー登録はこちら</button>
               </>
             )}
