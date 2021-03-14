@@ -7,7 +7,11 @@ import styles from './Form.module.scss';
 
 const endpoint = process.env.BASE_URL + 'login'
 
-export const UserForm: React.FC = () => {
+type LoginFormProps = {
+  Closemodal: VoidFunction
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ Closemodal }) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (value: any): void => console.log(value);
 

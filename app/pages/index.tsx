@@ -65,7 +65,7 @@ export default function Home() {
               </h3>
               <h3 className={styles.guide_title}>ユーザー登録して<br />レビューを投稿！
               <br />
-                {/* <Signup title='レビューを投稿する' /> */}
+                <Modal title='レビューを投稿する' />
               </h3>
             </div>
           )}

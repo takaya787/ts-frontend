@@ -1,17 +1,67 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { Auth } from '../../modules/auth'
 //contexts
-// import { UserContext } from '../../pages/_app';
+import { UserContext } from '../../pages/_app';
+import { UserValueType, UserSignupType } from '../../types/UserType'
 import styles from './Form.module.scss';
 
 const endpoint = process.env.BASE_URL + 'users'
 
-export const UserForm: React.FC = () => {
+type UserFormProps = {
+  Closemodal: VoidFunction
+}
+
+export const UserForm: React.FC<UserFormProps> = ({ Closemodal }) => {
   const { register, handleSubmit } = useForm();
   const initialerrors = { name: '', email: '', password: '', password_confirmation: '' };
 
-  const onSubmit = (value: any): void => console.log(value);
+  const router = useRouter()
+  //_appからcontextsを受け取る
+  const { setUser } = useContext(UserContext);
+
+  const onSubmit = (value: UserValueType): void => {
+    // console.log('raw data')
+    // console.log(value);
+    fetch(endpoint, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          name: value.name,
+          email: value.email,
+          password: value.password,
+          password_confirmation: value.password_confirmation
+        }
+      }),
+    })
+      .then(response => response.json())
+      .then((data): UserSignupType => {
+        console.log('response data')
+        console.log(data);
+        if (data.errors) {
+          console.log(data.errors);
+          // handleError(data.errors);
+          return
+        }
+        // console.log(data.token);
+        console.log('User is created successfully');
+        //Login関連の処理 context使用
+        // Auth.login(data.token);
+        const user_data = data.user
+        setUser({ id: user_data.id, email: user_data.email, name: user_data.name });
+        // router.push('/reviews/new')
+        Closemodal()
+        //Login関連の処理 終了
+        // resetError();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <label className={styles.label} htmlFor="name">お名前</label>
