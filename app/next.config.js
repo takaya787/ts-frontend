@@ -6,7 +6,7 @@ module.exports = withSass({
 module.exports = {
   env: {
     // Reference a variable that was defined in the .env file and make it available at Build Time
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
-    BASE_URL: process.env.BASE_URL,
+    NEXT_PUBLIC_GOOGLE_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   }
 }
