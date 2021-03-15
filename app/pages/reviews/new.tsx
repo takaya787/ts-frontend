@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Layout } from '../../components/Layout';
 import styles from '../../styles/Review.module.scss'
+//components
+import { Map } from '../../components/maps/Map'
 
 export default function New() {
   return (
@@ -17,7 +19,7 @@ export default function New() {
             ピンをタッチして、ピンの位置を操作できます
           </p>
         </div>
-        {/* <Map /> */}
+        <Map />
       </div>
     </Layout>
   )
