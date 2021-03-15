@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import useSWR from 'swr';
 import GoogleMapReact from 'google-map-react';
+//components
+import { CenterPin } from './CenterPin'
 //types
 import { MapCenterType } from '../../types/MapType'
 //others
@@ -35,7 +37,11 @@ export const Map: React.FC = () => {
         yesIWantToUseGoogleMapApiInternals
       /* これをonにしたらfull画面ボタンoffになる */
       //defaultOptions={defaultMapOptions}
-      ></GoogleMapReact>
+      >
+        <CenterPin lat={center.lat}
+          lng={center.lng}
+          setCenter={setCenter} $hover />
+      </GoogleMapReact>
     </div>
   )
 }
