@@ -1,32 +1,16 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+//context
+//types
 import { MapCenterType } from '../../types/MapType';
+//others
 import styles from './CenterPin.module.scss';
 
-const markerStyle = {
-  height: 20,
-  width: 20,
-  backgroundColor: 'red',
-  cursor: 'pointer',
-  zIndex: 3,
-};
-const hoverStyle = {
-  height: 20,
-  width: 20,
-  backgroundColor: 'blue',
-  cursor: 'pointer',
-  zIndex: 3,
-};
-
-type CeneterChildrenProps = {
-  $hover: boolean,
-  lat: number,
-  lng: number,
-  setCenter: Dispatch<SetStateAction<MapCenterType>>
-}
-
-export const CenterPin: React.FC<CeneterChildrenProps> = ({ $hover, lat, lng }) => {
-
-  const style = $hover ? hoverStyle : markerStyle;
-  return (
-    <div className={styles.marker} style={style} ></div>)
+export const CenterPin: React.FC<any> = ({ $geoService }) => {
+  const [center, setCenter] = useState<MapCenterType>()
+  const mapCenter: MapCenterType = $geoService.transform_.center;
+  useEffect(function () {
+    setCenter(mapCenter)
+    // console.log(mapCenter)
+  }, [mapCenter])
+  return (<div className={styles.marker} ></div>)
 }
