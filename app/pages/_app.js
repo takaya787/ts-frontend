@@ -3,7 +3,7 @@ import { useState, useEffect, createContext } from 'react';
 import { Auth } from '../modules/Auth';
 
 export const UserContext = createContext();
-const baseUrl = `${process.env.BASE_URL}auto_login`
+const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}auto_login`
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({ email: '', id: 0, name: '' })
