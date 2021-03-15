@@ -73,7 +73,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ Closemodal }) => {
         name="password"
         ref={register({ required: 'passwordは必須です' })}
       />
-      <button type="submit" className={styles.form_submit}>登録する</button>
+      <button type="submit" className={styles.form_submit}>ログイン</button>
     </form>
   )
 }

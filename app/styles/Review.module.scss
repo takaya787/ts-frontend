@@ -1,0 +1,30 @@
+.title {
+  display: block;
+  padding-top: 20px;
+  padding-left: 5%;
+  height: 50px;
+  &_text {
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 18px;
+  }
+}
+
+.description {
+  margin: 0;
+  line-height: 18px;
+  padding-bottom: 10px;
+  margin-left: 5%;
+  &_text {
+    font-size: 14px;
+    padding-bottom: 10px;
+    .red {
+      color: red;
+      font-weight: bold;
+    }
+  }
+  &_link {
+    color: brown;
+    font-weight: bold;
+  }
+}
