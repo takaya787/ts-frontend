@@ -1,21 +1,24 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Auth } from '../../../modules/Auth';
 import styles from './ReviewForm.module.scss';
 //mutateでkeyを元に更新できる
 import { mutate } from 'swr';
+import { CenterContext } from '../CenterPin'
 //components
-
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL + 'reviews';
-
 //type
 type ReviewFormProps = {
-  CloseForm: VoidFunction
+  CloseForm: VoidFunction,
+  lat: number,
+  lng: number
 }
 
-export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm }) => {
+export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm, lat, lng }) => {
   //scoreをReviewStarsから入力するためにstateを用いる
   const [score, setScore] = useState(0);
+  //CenterContextを受け取る
+  // const { center } = useContext(CenterContext);
 
   const { register, handleSubmit } = useForm();
 
@@ -27,14 +30,14 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm }) => {
       // onSubmit={handleSubmit(onSubmit)}
       >
         <h3 className={styles.title}>投稿内容を入力してください</h3>
-        <label htmlFor="reason">滞在理由について(30字以内）<span className="required">＊必須</span></label>
-        <input className={styles.form} type="text" name="reason" id="reason"
+        <label htmlFor="reason">滞在理由について(30字以内）<span className="required">＊必須</span></label><br />
+        <textarea className={styles.form} name="reason" id="reason"
           ref={register({ required: '滞在理由は必須です' })}
           placeholder="滞在した理由や目的について"
         />
 
-        <label className={styles.labelnumber} htmlFor="duration">滞在期間(月)<span className="required">＊数字のみ入力</span></label>
-        <input className={`${styles.form} ${styles.number}`} type="number" name="duration" id="duration" ref={register({ required: '滞期間は必須です' })} />
+        <label className={styles.labelnumber} htmlFor="duration">滞在期間(月)<span className="required">＊数字のみ入力</span></label><br />
+        <input className={`${styles.form} ${styles.number}`} type="number" name="duration" id="duration" ref={register({ required: '滞在期間は必須です' })} /><br />
 
         <label htmlFor="food">食生活について(150字以内)</label>
         <textarea className={`${styles.form} ${styles.textarea}`} name="food" id="food" ref={register()}

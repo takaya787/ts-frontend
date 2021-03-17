@@ -28,6 +28,14 @@
   box-sizing: border-box;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
+.marker_button {
+  background-color: none;
+  border: none;
+  opacity: 0;
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 50%;
+}
 
 // CenterPinのmenu用
 #center_menu {
