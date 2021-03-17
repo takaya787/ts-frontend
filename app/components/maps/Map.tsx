@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import GoogleMapReact from 'google-map-react';
 //components
 import { CenterPin } from './CenterPin'
+import { SearchWindow } from './SearchWindow'
 //types
 import { MapCenterType } from '../../types/MapType'
 //others
@@ -24,7 +25,7 @@ export const Map: React.FC = () => {
 
   return (
     <div className={styles.Googlemap}>
-      {/* <CenterContext.Provider value={CenterValue}> */}
+      <SearchWindow setMapCenter={setMapCenter} />
       <GoogleMapReact
         bootstrapURLKeys={{
           //API_KEYは絶対に直接入力しない　過去のものは変更済み
@@ -36,7 +37,6 @@ export const Map: React.FC = () => {
       >
         <CenterPin />
       </GoogleMapReact>
-      {/* </CenterContext.Provider> */}
     </div>
   )
 }
