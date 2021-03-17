@@ -9,7 +9,7 @@ import styles from './SearchWindow.module.scss'
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}reviews/check`
 
-export const SearchWindow: React.FC<SearchWindowProps> = ({ setMapCenter }) => {
+export const SearchWindow: React.FC<SearchWindowProps> = ({ setMapCenter, setZoom }) => {
   //react-hook-formから使用
   const { register, handleSubmit } = useForm();
 
@@ -34,7 +34,7 @@ export const SearchWindow: React.FC<SearchWindowProps> = ({ setMapCenter }) => {
       .then((data: SearchData) => {
         // console.log(data.lat);
         setMapCenter({ lat: data.lat, lng: data.lng });
-        // setZoom(6.5);
+        setZoom(7.5);
       })
       .catch((error) => {
         console.error('Error:', error);

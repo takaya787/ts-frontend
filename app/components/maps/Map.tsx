@@ -17,15 +17,13 @@ export const Map: React.FC = () => {
   const [Mapcenter, setMapCenter] = useState<MapCenterType>(InitialCenter);
 
   const [zoom, setZoom] = useState<number>(6.0);
-  const ZoomValue = { zoom, setZoom }
-
   // useEffect(function () {
 
   // })
 
   return (
     <div className={styles.Googlemap}>
-      <SearchWindow setMapCenter={setMapCenter} />
+      <SearchWindow setMapCenter={setMapCenter} setZoom={setZoom} />
       <GoogleMapReact
         bootstrapURLKeys={{
           //API_KEYは絶対に直接入力しない　過去のものは変更済み

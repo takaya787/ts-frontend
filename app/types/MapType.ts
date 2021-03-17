@@ -14,5 +14,6 @@ export type SearchData = {
 }
 
 export type SearchWindowProps = {
-  setMapCenter(center: MapCenterType): void
+  setMapCenter(center: MapCenterType): void,
+  setZoom(target: number): void
 }
