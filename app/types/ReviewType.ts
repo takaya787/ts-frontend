@@ -12,8 +12,6 @@ export type ReviewType = {
   lng: number
 }
 
-export type ReviewContextType = {
-  ReviewsUrl: string,
-  reviews_data: ReviewType[] | null,
-  reviews_error: string | null
+export type ReviewValueType = {
+  review: ReviewType
 }
