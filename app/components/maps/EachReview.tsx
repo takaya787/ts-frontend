@@ -50,7 +50,7 @@ export const EachReview: React.FC<ReviewType> = (props) => {
   }
   return (
     <ReviewContext.Provider value={ReviewValue}>
-      <div className={styles.eachreview} onClick={() => handleReview()} style={{ zIndex: 1 }}></div>
+      <div className={styles.each_review} onClick={() => handleReview()} style={{ zIndex: 1 }}></div>
       {reviewopen && (
         <FullContent
           handleClose={handleClose}
