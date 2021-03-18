@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 住み心地.com
+[ページはこちら](https://frontend.takaya787.vercel.app/)
 
-## Getting Started
+こちらはNext.jsによるフロントエンド側のAppレポジトリーです。
+**バックエンド**側のRails API側のレポジトリーは[こちら](https://github.com/takaya787/backend)
 
-First, run the development server:
+## サイト概要
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**住み心地.com**は地図内のマップに直接その場所の生活経験を、住み心地という評価と共に投稿できるウェブサイトです。<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 作成理由
+自分は留学経験があるのですが、留学に出発する前は自分が知らない土地で生活することに対して、不安を感じました。<br>
+そこで、海外への不安を経験者の話を聞いて、少しでも解消できればと思い、今回のサイトを作成しました。
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 使用技術
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* Ruby 2.7.2, Rails 6.1.1
+* React
+* Next.js
+* Docker, Docker-compose (開発環境)
+* Postgresql(DB)
+* Google-Map API
+* Geocoding API
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 機能一覧
+**【機能一覧】**
 
-## Learn More
+◆　ユーザー機能 
+* 新規登録、ログイン(Google認証もあり)、ログアウト
+* マイページ、登録情報を変更
 
-To learn more about Next.js, take a look at the following resources:
+◆　管理者機能 
+* ユーザーの削除、レビューの削除、ユーザー一覧確認機能
+* ユーザー検索機能、　ユーザーネームかemailで検索ができます。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+◆　レビュー機能 
+* 新規作成、変更、削除(削除はユーザーページからのみ可能)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+◆　Map機能( google-map-react 使用)
+* 位置情報検索から、地図を移動( geocoding API使用)
+* レビュー新規作成、変更機能(Reactによる非同期送信)
+* レビューを読み込み、地図内で表示(Reactによる非同期読み込み)
+* クリック時にクリックされたレビュー内容を表示
+* 投稿者のみ、Mapから直接レビューの編集フォームを表示できる機能
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 苦労した点
+Single Page Applicationとして作成するためにfrontend部分とbackend部分を分けて作成し、非同期通信でこの２つを繋げること

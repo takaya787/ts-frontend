@@ -9,7 +9,7 @@ type ReactStarsProps = {
   DefaultValue?: number
 }
 
-export const ReactStars: React.FC<ReactStarsProps> = ({ parentscoreChange, size, isEdit = true, DefaultValue = 3 }) => {
+export const ReactStars: React.FC<ReactStarsProps> = ({ parentscoreChange, size, isEdit = true, DefaultValue = 3.0 }) => {
   const [value, setValue] = useState<number>(0);
   const [selectedValue, setSelectedValue] = useState<number>(0);
 
