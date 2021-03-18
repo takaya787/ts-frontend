@@ -4,7 +4,7 @@ import { Auth } from '../../../modules/Auth';
 import styles from './ReviewForm.module.scss';
 //mutateでkeyを元に更新できる
 import { mutate } from 'swr';
-import { CenterContext } from '../CenterPin'
+
 //components
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL + 'reviews';
 //type
@@ -14,13 +14,60 @@ type ReviewFormProps = {
   lng: number
 }
 
+type ReviewFormValue = {
+  reason: string,
+  duration: number,
+  food: string,
+  convenient: string,
+  favorite: string,
+  advice: string,
+  score: string
+}
+
 export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm, lat, lng }) => {
   //scoreをReviewStarsから入力するためにstateを用いる
   const [score, setScore] = useState(0);
-  //CenterContextを受け取る
-  // const { center } = useContext(CenterContext);
 
   const { register, handleSubmit } = useForm();
+
+  const onSubmit = (value: ReviewFormValue): void => {
+    // console.log(value.title);
+    fetch(baseUrl, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Auth.getToken()}`
+      },
+      body: JSON.stringify({
+        review: {
+          reason: value.reason,
+          duration: value.duration,
+          food: value.food,
+          convenient: value.convenient,
+          favorite: value.favorite,
+          advice: value.advice,
+          score: value.score
+        },
+        lat: lat,
+        lng: lng,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        if (data.errors) {
+          console.log(data.errors);
+          return
+        }
+        console.log('Review is successfully created');
+        mutate("http://localhost:3000/api/reviews.json");
+        //投稿後にFormを閉じる
+        CloseForm();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   return (
     <div className={styles.draft}>

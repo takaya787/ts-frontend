@@ -35,11 +35,11 @@ export const CenterPin: React.FC<any> = ({ $geoService }) => {
 
 
   return (
-    <CenterContext.Provider value={CenterValue}>
+    <>
       <div className={styles.marker}><button className={styles.marker_button} onClick={() => setFormOpen(!formopen)} /></div>
       {formopen && (
         <ReviewForm CloseForm={CloseForm} lat={center.lat} lng={center.lng} />
       )}
-    </CenterContext.Provider>
+    </>
   )
 }
