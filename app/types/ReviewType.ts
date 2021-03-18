@@ -15,3 +15,13 @@ export type ReviewType = {
 export type ReviewValueType = {
   review: ReviewType
 }
+
+export type ReviewFormValue = {
+  reason: string,
+  duration: number,
+  food: string,
+  convenient: string,
+  favorite: string,
+  advice: string,
+  score: string
+}

@@ -7,7 +7,7 @@ const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}auto_login`
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({ email: '', id: 0, name: '' })
-  const Uservalue = {
+  const UserValue = {
     user,
     setUser,
   };
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
   }, []) // [] => changed to => [user]
 
   return (
-    <UserContext.Provider value={Uservalue}>
+    <UserContext.Provider value={UserValue}>
       <Component {...pageProps} />
     </UserContext.Provider>
   )

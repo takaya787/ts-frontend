@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
 import { ReviewValueType, ReviewType } from '../../types/ReviewType'
-import { ReviewForm } from './CenterPinChildren/ReviewForm';
 //others
 import styles from './EachReview.module.scss';
-
+//components
+import { FullContent } from './EachReviewChildren/FullContent';
+import { ReviewEdit } from './EachReviewChildren/ReviewEdit';
 //context 作成
 export const ReviewContext = createContext({} as ReviewValueType)
 
@@ -48,6 +49,17 @@ export const EachReview: React.FC<ReviewType> = (props) => {
   return (
     <ReviewContext.Provider value={ReviewValue}>
       <div className={styles.eachreview} onClick={() => handleReview()} style={{ zIndex: 1 }}></div>
+      {reviewopen && (
+        <FullContent
+          handleClose={handleClose}
+          handleEdit={handleEdit}
+        />
+      )}
+      {editopen && (
+        <ReviewEdit
+          handleClose={handleClose}
+        />
+      )}
     </ReviewContext.Provider>
   )
 }

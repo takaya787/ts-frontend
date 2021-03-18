@@ -3,7 +3,7 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 type parentFunc = (a: number) => Dispatch<number>;
 
 type ReactStarsProps = {
-  parentscoreChange: Dispatch<number>,
+  parentscoreChange?: Dispatch<number>,
   size: number,
   isEdit?: boolean,
   DefaultValue?: number
