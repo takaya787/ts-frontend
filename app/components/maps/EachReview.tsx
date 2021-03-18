@@ -1,10 +1,12 @@
 import React, { createContext, useState } from 'react';
-import { ReviewValueType, ReviewType } from '../../types/ReviewType'
-//others
-import styles from './EachReview.module.scss';
 //components
 import { FullContent } from './EachReviewChildren/FullContent';
 import { ReviewEdit } from './EachReviewChildren/ReviewEdit';
+//types
+import { ReviewValueType, ReviewType } from '../../types/ReviewType'
+//others
+import styles from './EachReview.module.scss';
+
 //context 作成
 export const ReviewContext = createContext({} as ReviewValueType)
 

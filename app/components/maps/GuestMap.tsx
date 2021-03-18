@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 //components
-import { CenterPin } from './CenterPin'
 import { SearchWindow } from './SearchWindow'
 import { EachReview } from './EachReview'
 //import Hooks
@@ -13,7 +12,7 @@ import styles from './Map.module.scss';
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
-export const Map: React.FC = () => {
+export const GuestMap: React.FC = () => {
   const InitialCenter = { lat: 48.856614, lng: 2.3522219 };
   const [Mapcenter, setMapCenter] = useState<MapCenterType>(InitialCenter);
   const [zoom, setZoom] = useState<number>(6.0);
@@ -38,7 +37,6 @@ export const Map: React.FC = () => {
         center={Mapcenter}
         zoom={zoom}
       >
-        <CenterPin />
         {reviews_data && reviews_data.map((review) =>
         (<EachReview
           key={review.id}

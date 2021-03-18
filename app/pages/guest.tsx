@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Layout } from '../components/Layout';
 import styles from '../styles/Review.module.scss'
 //components
-import { Map } from '../components/maps/Map'
+import { GuestMap } from '../components/maps/GuestMap'
 import { Modal } from '../components/Modal'
 
 export default function New() {
@@ -21,7 +21,7 @@ export default function New() {
           </p>
           <Modal title='レビューを投稿する！' />
         </div>
-        <Map />
+        <GuestMap />
       </div>
     </Layout>
   )
