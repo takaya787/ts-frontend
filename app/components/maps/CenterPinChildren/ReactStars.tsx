@@ -3,13 +3,13 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 type parentFunc = (a: number) => Dispatch<number>;
 
 type ReactStarsProps = {
-  parentscoreChange: Dispatch<number>,
+  parentscoreChange?: Dispatch<number>,
   size: number,
   isEdit?: boolean,
   DefaultValue?: number
 }
 
-export const ReactStars: React.FC<ReactStarsProps> = ({ parentscoreChange, size, isEdit = true, DefaultValue = 3 }) => {
+export const ReactStars: React.FC<ReactStarsProps> = ({ parentscoreChange, size, isEdit = true, DefaultValue = 3.0 }) => {
   const [value, setValue] = useState<number>(0);
   const [selectedValue, setSelectedValue] = useState<number>(0);
 
