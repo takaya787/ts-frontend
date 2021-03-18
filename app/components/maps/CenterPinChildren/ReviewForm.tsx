@@ -64,7 +64,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm, lat, lng }) =
   }
 
   return (
-    <div className={styles.draft}>
+    <div className={styles.draft} >
       <button className={styles.draft_button} onClick={CloseForm}>✕</button>
       <form
         className={styles.draft_form}
@@ -102,7 +102,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({ CloseForm, lat, lng }) =
           parentscoreChange={setScore}
           size={25}
         // isEdit={true}
-        // DefaultValue={3}
+        // DefaultValue={3.5}
         />
         {/*　scoreformは隠し要素にして問題ないはず */}
         <input className="form" type="hidden" name="score" id="score" value={score} ref={register()} />

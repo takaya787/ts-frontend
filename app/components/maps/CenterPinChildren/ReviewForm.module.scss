@@ -4,7 +4,7 @@
   text-align: left;
   &_button {
     position: absolute;
-    top:-250px;
+    top:-270px;
     left: 270px;
     background-color: #f3f3f3;
     border: none;
@@ -20,12 +20,11 @@
   }
   &_form {
     position: absolute;
-    top:-260px;
+    top:-280px;
     left: 50px;
     background-color: #f3f3f3;
     padding: 10px 30px 10px 20px;
-    // height: 70vh;
-    height: 200px;
+    height: 70vh;
     width: 250px;
     overflow-y: scroll;
     border-radius: 20px;

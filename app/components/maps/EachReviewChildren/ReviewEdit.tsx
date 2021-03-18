@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Auth } from '../../../modules/Auth';
 //mutateでkeyを元に更新できる
@@ -32,7 +32,7 @@ export const ReviewEdit: React.FC<ReviewEditProps> = ({ handleClose }) => {
   const onSubmit = (value: ReviewFormValue): void => {
     // console.log(value.title);
     fetch(EditUrl, {
-      method: 'POST', // or 'PUT'
+      method: 'PUT', //'POST' or 'PUT'
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${Auth.getToken()}`
@@ -107,8 +107,8 @@ export const ReviewEdit: React.FC<ReviewEditProps> = ({ handleClose }) => {
         <ReactStars
           parentscoreChange={setScore}
           size={25}
-        // isEdit={true}
-        // DefaultValue={3}
+          // isEdit={true}
+          DefaultValue={review.score}
         />
         {/*　scoreformは隠し要素にして問題ないはず */}
         <input className="form" type="hidden" name="score" id="score" value={score} ref={register()} />
