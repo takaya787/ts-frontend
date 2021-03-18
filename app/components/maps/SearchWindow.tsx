@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Auth } from '../../modules/auth';
+import { Auth } from '../../modules/Auth';
 //react-iconsをダウンロード
 import { SiGooglemaps } from 'react-icons/si';
 import { GiMagnifyingGlass } from 'react-icons/gi';

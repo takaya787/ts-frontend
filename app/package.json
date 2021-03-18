@@ -13,6 +13,7 @@
     "next": "10.0.8",
     "node-sass": "^5.0.0",
     "react": "17.0.1",
+    "react-awesome-stars-rating": "^0.3.0",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.15.4",
     "react-icons": "^4.2.0",
