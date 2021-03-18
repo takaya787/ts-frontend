@@ -70,7 +70,7 @@ export default function Beginner() {
                 <p>検索フォームに地名や国を入力して、虫眼鏡アイコンを押すと地図が変化します</p>
               </div>
             </div>
-            <div className={styles.explain}>
+            {/* <div className={styles.explain}>
               <div className={styles.explain_title}>
                 <h2>STEP4 メニューを表示</h2>
                 <div className={styles.explain_text}>
@@ -81,12 +81,12 @@ export default function Beginner() {
                   <p className={styles.bold}>メニューから、ピンを移動させたり、レビューを投稿したりできます。</p>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className={styles.explain}>
               <div className={styles.explain_title}>
                 <h2>LAST STEP レビューを投稿</h2>
                 <div className={styles.explain_text}>
-                  <p>任意の場所にピンを移動させた後、<span className={styles.bold}>この場所に投稿 </span>をタッチすると、投稿フォームが表示されます。</p>
+                  <p>任意の場所にピンを移動させた後、<span className={styles.bold}>ピン</span>をクリックすると、投稿フォームが表示されます。</p>
                   <div className={styles.small}>
                     <Image src='/images/review_form.png' alt='review_form' width={450} height={600} />
                   </div>

@@ -49,7 +49,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ Closemodal }) => {
         setUser({ id: user_data.id, email: user_data.email, name: user_data.name });
         Closemodal()
         //Login関連の処理 終了
-        // router.push('/reviews/new');
+        router.push('/reviews/new');
       })
       .catch((error) => {
         console.error('Error:', error);

@@ -4,7 +4,7 @@ import { ReactStars } from '../CenterPinChildren/ReactStars';
 //Contexts
 import { UserContext } from '../../../pages/_app.js'
 import { ReviewContext } from '../EachReview';
-import styles from '../Eachreview.module.scss'
+import styles from '../EachReview.module.scss'
 
 type FullContentProps = {
   handleClose: VoidFunction,
