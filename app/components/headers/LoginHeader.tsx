@@ -1,20 +1,23 @@
-import React, { useState, useContext, ReactEventHandler } from 'react';
+import React, { useState, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 //react-iconsからダウンロード
 import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCross } from 'react-icons/im';
 //others
-// import { UserContext } from '../../pages/_app';
+import { UserContext } from '../../pages/_app';
 import styles from './HeaderMenu.module.scss';
 import { Auth } from '../../modules/Auth';
 
 export const LoginHeader: React.FC = () => {
   const [menuopen, setMenuOpen] = useState<boolean>(false);
   const router = useRouter()
+
+  //userContextを取得
+  const { user, setUser } = useContext(UserContext);
   const LogoutButton = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    // setUser({ email: '', id: 0, name: '' })
+    setUser({ email: '', id: 0, name: '' })
     Auth.logout();
     router.push("/");
   }
@@ -35,9 +38,9 @@ export const LoginHeader: React.FC = () => {
             <Link href="/reviews/new">
               <a className={styles.link}><li className={styles.link_part}>Map</li></a>
             </Link>
-            {/* <Link href={`/users/${user.id}`}>
+            <Link href={`/users/${user.id}`}>
               <a className={styles.link}><li className={styles.link_part}>Profile</li></a>
-            </Link> */}
+            </Link>
             <li className={styles.component}>
               <button className={styles.component_button} onClick={(e) => LogoutButton(e)}>ログアウト
               </button>
