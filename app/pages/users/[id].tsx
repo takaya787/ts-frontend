@@ -6,11 +6,12 @@ import { Layout } from '../../components/Layout';
 //types
 import { ReviewType } from '../../types/ReviewType'
 //others
-import { getAllUserIDs } from '../../modules/userStatics';
+import { getAllUserPaths } from '../../modules/userStatics';
 import styles from '../../styles/User.module.scss';
 
 type UserPropsType = {
   id: number
+  email: string
 }
 type UserFetcherType = {
   id: number,
@@ -26,17 +27,13 @@ export default function User(props: UserPropsType) {
 
   const { data: user_data, error: user_error } = useSWR(baseUrl, fetcher)
 
-  useEffect(function () {
-    console.log('user_dataが変更されました。')
-    console.log(user_data)
-  }, [user_data])
   return (
     <Layout >
       <Head>
         <title>Your profile | 住み心地.com</title>
       </Head>
       <div id={styles.user}>
-        <h3> {props.id}</h3>
+        <h3> user {props.id}</h3>
         {
           user_error && (
             <p>failed to load</p>
@@ -55,7 +52,7 @@ export default function User(props: UserPropsType) {
           )
         }
         {
-          user_data && user_data.reviews.length ? (
+          user_data && user_data.reviews ? (
             <div className={styles.reviews} >
               <ul className={styles.reviews_lists}>
                 {user_data.reviews.map((review) => (
@@ -76,21 +73,23 @@ export default function User(props: UserPropsType) {
     </Layout>
   )
 }
-//path内のparams要素をparamsとして、propsして、各ページをレンダリングする
-export async function getStaticPaths() {
-  const paths = await getAllUserIDs();
-  // const paths = ['/users/4', '/users/5']
-  // console.log(paths);
-  return {
-    paths,
-    fallback: false
-  }
-}
 //path内のparamsをpropしてる
 export async function getStaticProps({ params }) {
   return {
     props: {
       id: params.id
     }
+  }
+}
+
+
+//予め作成するURLをpathで定義しておく
+export async function getStaticPaths() {
+  const paths = await getAllUserPaths();
+  // const paths = ['/users/4', '/users/5']
+  // console.log(paths);
+  return {
+    paths,
+    fallback: true
   }
 }

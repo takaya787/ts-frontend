@@ -1,27 +1,29 @@
 type UserIDPaths = string[]
-export async function getAllUserIDs(): Promise<UserIDPaths> {
-  const EndPoint = `${process.env.NEXT_PUBLIC_BASE_URL}users`
+
+//Userのpathを取得、作成するための関数
+export async function getAllUserPaths(): Promise<UserIDPaths> {
+  const EndPoint = 'https://railsbackend2020.herokuapp.com/api/users'
   // fetch と response.json 両方のエラーをキャッチ
   const getJson = async () => {
-    const res = await fetch(EndPoint);
-    if (res.ok) {
-      let json = await res.json()
-      return json
-    }
-  }
-  //Jsonをarrayに変更
-  const getArray = async () => {
-    const result = await getJson()
-    const arr = await JSON.parse(result)
-    return arr
+    const res = await fetch(EndPoint, {
+      headers: { 'Content-Type': 'application/json', 'User-Agent': '*' }
+    })
+
+    const data = await res.json()
+    return data
+    // const sample = [{ id: 1 }, { id: 2 }, { id: 3 }]
+    // return sample
   }
 
-  //pathに送ったpathは実際のurlと等しい必要がある
-  let paths = [];
-  const arr = await getArray()
-  await arr.map(data => {
-    let path = '/users/' + data.id.toString(10);
-    paths.push(path);
-  })
-  return paths
+  //Jsonをpathに変更
+  const getPath = async (): Promise<UserIDPaths> => {
+    // usersの情報を取得する
+    const result = await getJson()
+    // console.log(result)
+    const path = result?.map((user) => `/users/${user.id}`) || [];
+    // console.log(array);
+    return path
+  }
+  //Pathを返却する
+  return getPath()
 }
