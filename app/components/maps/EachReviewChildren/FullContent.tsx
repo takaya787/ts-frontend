@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 //Components
 import { ReactStars } from '../CenterPinChildren/ReactStars';
 //Contexts
@@ -18,7 +18,12 @@ export const FullContent: React.FC<FullContentProps> = (props) => {
   return (
     <div className={styles.contents}>
       <button className={styles.button} onClick={() => props.handleClose()} style={{ zIndex: 10 }}>✕</button>
-      <div className={styles.content} style={{ zIndex: 5 }}>
+      {/* ここから、FullContentのDOM start */}
+      <div className={styles.content} style={{ zIndex: 5 }} >
+        {/* reviewの編集ボタンはUserとcurrentUserが等しい時のみ表示 */}
+        {user.id === review.user_id && (
+          <button className={styles.editbutton} onClick={() => props.handleEdit()} style={{ zIndex: 10 }}>編集する</button>
+        )}
         <p className={styles.content_title} >住み心地</p>
         <p className={styles.content_score}>{review.score}</p>
         <div className={styles.content_star}><ReactStars DefaultValue={review.score} isEdit={false} size={20} /></div>
@@ -35,10 +40,6 @@ export const FullContent: React.FC<FullContentProps> = (props) => {
         <p className={styles.content_title}>アドバイス</p>
         <p className={styles.content_text}>{review.advice}</p>
       </div>
-      {/* reviewの編集ボタンはUserとcurrentUserが等しい時のみ表示 */}
-      {user.id === review.user_id && (
-        <button className={styles.editbutton} onClick={() => props.handleEdit()} style={{ zIndex: 10 }}>編集する</button>
-      )}
     </div>
   )
 }

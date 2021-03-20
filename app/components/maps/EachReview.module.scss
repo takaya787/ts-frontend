@@ -59,9 +59,12 @@
     border: none;
     animation: slideInTop 1.0s;
     z-index: 10;
-    position: absolute;
-    top: -153px;
-    right: 50px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    // position: absolute;
+    // top: -153px;
+    // right: 50px;
     color: blue;
     &:hover {
       text-decoration: underline;
@@ -74,6 +77,8 @@
     text-align: left;
     background-color: white;
     padding: 10px;
+    max-height: 400px;
+    overflow-y:scroll;
     width: 200px;
     border-radius: 20px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
@@ -116,10 +121,6 @@
     .button {
       position: absolute;
       right: -120px;
-    }
-    .editbutton {
-      position: absolute;
-      right: -100px;
     }
     .content {
       position: absolute;
