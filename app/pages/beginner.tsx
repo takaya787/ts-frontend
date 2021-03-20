@@ -4,7 +4,7 @@ import Link from 'next/link';
 //components関連
 import { Auth } from '../modules/Auth';
 import { Layout } from '../components/Layout';
-// import Signup from '../components/Signup';
+import { Modal } from '../components/Modal';
 import styles from '../styles/Beginner.module.scss';
 
 export default function Beginner() {
@@ -91,16 +91,15 @@ export default function Beginner() {
                     <Image src='/images/review_form.png' alt='review_form' width={450} height={600} />
                   </div>
                   <p>フォーム内容入力後に<span className={styles.bold}>投稿を送信</span>をクリックして、投稿完了です。</p>
-                  {/* {Auth.isLoggedIn() ? (
-                    // <Link href='/reviews/new'>
-                    //   <a>レビューを投稿する</a>
-                    // </Link>
-                    <></>
+                  {Auth.isLoggedIn() ? (
+                    <Link href='/reviews/new'>
+                      <a>レビューを投稿する</a>
+                    </Link>
                   ) : (
-                    <Signup title='reviewを投稿する'
+                    <Modal title='reviewを投稿する'
                     />
                   )
-                  } */}
+                  }
                 </div>
               </div>
             </div>

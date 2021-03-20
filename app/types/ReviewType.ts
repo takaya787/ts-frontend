@@ -8,8 +8,8 @@ export type ReviewType = {
   score: number,
   advice: string,
   user_id: number,
-  lat: number,
-  lng: number
+  lat?: number,
+  lng?: number
 }
 
 export type ReviewValueType = {
