@@ -74,6 +74,8 @@
     text-align: left;
     background-color: white;
     padding: 10px;
+    max-height: 400px;
+    overflow-y:scroll;
     width: 200px;
     border-radius: 20px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
